@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Project Documentation
+    url: https://github.com/atilimai/pneumonia-xray-ai/tree/main/docs
+    about: Read the project documentation before opening an issue.
+  - name: Issue Backlog
+    url: https://github.com/atilimai/pneumonia-xray-ai/blob/main/docs/ISSUE_BACKLOG.md
+    about: Check the planned issue backlog to see if a task is already tracked.
+  - name: Dataset Source
+    url: https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+    about: The Kermany et al. chest X-ray dataset on Kaggle.
