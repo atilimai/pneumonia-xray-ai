@@ -1,0 +1,71 @@
+name: Task
+description: A defined unit of work for the project backlog
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for planned project tasks. Tasks should be concrete, unassigned, and have clear acceptance criteria.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: A short description of what this task involves and why it matters.
+    validations:
+      required: true
+
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: What concrete outputs will this task produce?
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this task is done? List specific, verifiable conditions.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: List any other issues or tasks that must be completed first.
+      placeholder: "None"
+    validations:
+      required: false
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of Scope
+      description: What should this task explicitly not include?
+    validations:
+      required: false
+
+  - type: dropdown
+    id: label
+    attributes:
+      label: Primary Label
+      options:
+        - setup
+        - data
+        - modeling
+        - evaluation
+        - explainability
+        - deployment
+        - docs
+        - release
+    validations:
+      required: true

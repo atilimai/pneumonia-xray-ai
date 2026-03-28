@@ -1,0 +1,10 @@
+[project]
+name = "pneumonia-xray-ai"
+version = "0.1.0"
+description = "Binary classification of chest X-ray images as Pneumonia vs Normal using transfer learning"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+
+[project.urls]
+Repository = "https://github.com/atilimai/pneumonia-xray-ai"
