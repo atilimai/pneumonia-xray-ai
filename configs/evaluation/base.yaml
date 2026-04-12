@@ -1,0 +1,30 @@
+evaluation:
+  split: test
+  positive_class_name: PNEUMONIA
+  negative_class_name: NORMAL
+  positive_class_label: 1
+  negative_class_label: 0
+
+  threshold: 0.5
+  threshold_policy: fixed_default
+  threshold_policy_note: >
+    Use 0.5 as the default classification threshold.
+    Do not optimize threshold on the test set.
+    Any alternative threshold must be selected on validation data
+    and documented before final test evaluation.
+
+  input_csv: artifacts/predictions/test_predictions.csv
+
+  output:
+    metrics_json: artifacts/reports/evaluation_metrics.json
+    confusion_matrix_png: artifacts/figures/confusion_matrix.png
+    roc_curve_png: artifacts/figures/roc_curve.png
+
+  plots:
+    dpi: 160
+    confusion_matrix_title: Confusion Matrix
+    roc_curve_title: ROC Curve
+
+  required_columns:
+    - y_true
+    - y_prob
