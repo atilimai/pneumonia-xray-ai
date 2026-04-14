@@ -37,6 +37,16 @@ data/raw/chest_xray/
     └── PNEUMONIA/     (~390 images)
 ```
 
+## Expected File Counts
+
+| Split | NORMAL | PNEUMONIA | Total |
+|------|--------|-----------|-------|
+| Train | 1341 | 3875 | 5216 |
+| Val   | 8    | 8    | 16   |
+| Test  | 234  | 390  | 624  |
+
+Total images: 5856
+
 > Image counts are approximate and based on the standard Kaggle distribution.
 
 ---
