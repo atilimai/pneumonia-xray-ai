@@ -37,6 +37,16 @@ data/raw/chest_xray/
     └── PNEUMONIA/     (~390 images)
 ```
 
+## Expected File Counts
+
+| Split | NORMAL | PNEUMONIA | Total |
+|------|--------|-----------|-------|
+| Train | 1341 | 3875 | 5216 |
+| Val   | 8    | 8    | 16   |
+| Test  | 234  | 390  | 624  |
+
+Total images: 5856
+
 > Image counts are approximate and based on the standard Kaggle distribution.
 
 ---
@@ -44,7 +54,16 @@ data/raw/chest_xray/
 ## Key Concerns
 
 ### Class Imbalance
-The training set has significantly more pneumonia samples than normal samples (~3:1 ratio). This must be addressed to avoid a model that is biased toward predicting pneumonia. Mitigation options include:
+The training set has significantly more pneumonia samples than normal samples (~3:1 ratio). This must be addressed to avoid a model that is biased toward predicting pneumonia.
+
+### Split Imbalance Ratios
+- **Train:** 3875 / 1341 ≈ **2.89:1**
+- **Validation:** 8 / 8 = **1:1**
+- **Test:** 390 / 234 ≈ **1.67:1**
+
+This confirms that the strongest class imbalance exists in the training split, where pneumonia samples are nearly 3 times more frequent than normal samples.
+
+Mitigation options include:
 - Weighted loss function
 - Oversampling / undersampling
 - Class-weighted metrics for evaluation
