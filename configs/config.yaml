@@ -1,0 +1,20 @@
+model:
+  name: "resnet50"           
+  image_size: [224, 224]     
+
+training:
+  batch_size: 32            
+  learning_rate: 0.001       
+  epochs: 50                 
+  augmentation_flags:       
+    horizontal_flip: true
+    rotation: true
+    zoom: false
+
+evaluation:
+  metrics_to_compute:       
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+  decision_threshold: 0.5    
