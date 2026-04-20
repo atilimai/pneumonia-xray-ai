@@ -1,0 +1,8 @@
+decision_threshold: 0.5            
+metrics: 
+  - "accuracy"
+  - "precision"
+  - "recall"
+  - "f1_score"
+test_split_path: "data/processed/test/"
+output_dir: "reports/figures/"    
