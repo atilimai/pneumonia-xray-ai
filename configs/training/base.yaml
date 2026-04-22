@@ -1,0 +1,63 @@
+seed: 42
+
+data:
+  image_size: [224, 224]
+  num_workers: 4
+  pin_memory: true
+
+training:
+  num_epochs: 50
+  batch_size: 32
+  device: "cuda"
+  mixed_precision: false
+
+optimizer:
+  type: "AdamW"
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+
+scheduler:
+  type: "CosineAnnealing"
+  T_max: 50
+  eta_min: 1.0e-6
+  step_size: 10
+  gamma: 0.1
+  patience: 5
+  factor: 0.5
+
+loss:
+  type: "BCEWithLogitsLoss"
+  pos_weight: 3.0
+
+augmentation:
+  enabled: true
+  horizontal_flip: 0.5
+  rotation_degrees: 15
+  brightness_jitter: 0.2
+  contrast_jitter: 0.2
+  zoom_scale: [0.85, 1.0]
+  gaussian_blur: false
+
+regularization:
+  dropout_rate: 0.0
+  gradient_clip_value: null
+
+early_stopping:
+  enabled: true
+  patience: 10
+  min_delta: 0.001
+  monitor: "val_loss"
+
+checkpointing:
+  save_dir: "artifacts/checkpoints"
+  save_freq: 5
+  save_best_only: true
+  monitor: "val_loss"
+
+logging:
+  log_dir: "artifacts/logs"
+  log_freq: 10
+
+notes: "Placeholder base training config. All keys are expected by the training pipeline."
