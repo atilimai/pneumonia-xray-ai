@@ -1,0 +1,12 @@
+name: "efficientnet_b0"
+library: "timm"
+pretrained: true
+num_classes: 1
+input_channels: 3
+image_size: [224, 224]
+pooling: "avg"
+dropout_rate: 0.0
+freeze_backbone: false
+head_type: "linear"
+checkpoint_path: null
+notes: "Placeholder base model config for binary pneumonia classification using timm."
