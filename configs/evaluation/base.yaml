@@ -1,5 +1,6 @@
 evaluation:
   split: test
+
   positive_class_name: PNEUMONIA
   negative_class_name: NORMAL
   positive_class_label: 1
@@ -14,6 +15,18 @@ evaluation:
     and documented before final test evaluation.
 
   input_csv: artifacts/predictions/test_predictions.csv
+  required_columns:
+    - y_true
+    - y_prob
+
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - sensitivity
+    - specificity
+    - roc_auc
+    - confusion_matrix
 
   output:
     metrics_json: artifacts/reports/evaluation_metrics.json
@@ -22,9 +35,5 @@ evaluation:
 
   plots:
     dpi: 160
-    confusion_matrix_title: Confusion Matrix
-    roc_curve_title: ROC Curve
-
-  required_columns:
-    - y_true
-    - y_prob
+    confusion_matrix_title: "Confusion Matrix"
+    roc_curve_title: "ROC Curve"
