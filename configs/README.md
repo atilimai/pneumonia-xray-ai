@@ -39,6 +39,8 @@ Suggested fields:
 - `input_width`: integer  
 - `num_classes`: integer  
 - `pretrained`: boolean  
+- `pretrained_weights`: string — dataset the weights were trained on (e.g. `"imagenet"`)  
+- `pretrained_source`: string — library providing the weights (e.g. `"timm"`)  
 - `dropout`: float
 
 Example:
@@ -50,6 +52,8 @@ input_height: 224
 input_width: 224
 num_classes: 2
 pretrained: true
+pretrained_weights: "imagenet"
+pretrained_source: "timm"
 dropout: 0.3
 ```
 
