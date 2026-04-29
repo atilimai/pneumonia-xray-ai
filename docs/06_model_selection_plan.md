@@ -131,22 +131,76 @@ Validation accuracy will also be reported, but it will not be the only deciding 
 
 ## Fine-Tuning Strategy
 
-The fine-tuning strategy will be agreed before training begins.
+### Decision
 
-The planned strategy is:
+The project will use a staged transfer learning strategy consisting of:
 
-1. Load pretrained ImageNet weights using `timm`.
-2. Replace the final classification head with a binary classifier.
-3. Start with frozen backbone training:
-   - Freeze the pretrained feature extractor.
-   - Train only the classification head for the first few epochs.
-4. Continue with partial fine-tuning:
-   - Unfreeze the last block or last few layers.
-   - Train with a lower learning rate.
-5. Use the same preprocessing, augmentation, optimizer, and evaluation metrics across all candidate models.
-6. Compare models using the same train/validation/test split.
+1. Feature extraction (frozen backbone)
+2. Partial fine-tuning (unfreezing last layers)
 
-This strategy keeps the comparison fair because each architecture will be trained under the same general conditions.
+Full fine-tuning will NOT be used as the initial strategy.
+
+---
+
+### Selected Strategy
+
+#### 1. Feature Extraction Phase
+
+- Load pretrained ImageNet weights using `timm`
+- Replace the final classification head with a binary classifier
+- Freeze the entire pretrained backbone
+- Train only the classification head for the first few epochs
+
+This phase provides a stable baseline and prevents early overfitting.
+
+---
+
+#### 2. Partial Fine-Tuning Phase
+
+- Unfreeze the last block or last few layers of the backbone
+- Continue training with a lower learning rate
+- Monitor:
+  - validation F1-score
+  - validation loss
+  - overfitting behavior
+
+This allows the model to adapt high-level features to chest X-ray images.
+
+---
+
+### Rejected Strategy: Full Fine-Tuning (Initial Phase)
+
+Full fine-tuning is intentionally NOT used at the beginning because:
+
+- The dataset is limited and imbalanced
+- The validation set is extremely small (8 samples per class)
+- It increases the risk of overfitting
+- It requires more GPU memory and training time
+- It reduces stability when comparing different architectures
+
+Full fine-tuning may be considered later if justified by results.
+
+---
+
+### Consistency Requirement
+
+To ensure fair comparison between models:
+
+- The same fine-tuning strategy must be applied to all candidate architectures
+- The same preprocessing, augmentation, optimizer, and evaluation setup must be used
+- The same train/validation/test split must be preserved
+
+---
+
+### Rationale
+
+This staged approach balances stability and adaptability:
+
+- Feature extraction provides a safe and reproducible baseline
+- Partial fine-tuning allows domain-specific adaptation
+- Avoiding full fine-tuning initially reduces risk and improves comparability
+
+This strategy ensures reliable and fair evaluation across EfficientNet-B0, ResNet-18, and ResNet-50.
 
 ---
 
