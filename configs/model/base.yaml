@@ -1,8 +1,6 @@
-name: "efficientnet_b0"
+name: "tf_efficientnetv2_s"
 library: "timm"
 pretrained: true
-pretrained_weights: "imagenet"
-pretrained_source: "timm"
 num_classes: 1
 input_channels: 3
 image_size: [224, 224]
@@ -11,4 +9,4 @@ dropout_rate: 0.0
 freeze_backbone: false
 head_type: "linear"
 checkpoint_path: null
-notes: "Placeholder base model config for binary pneumonia classification using timm."
+notes: "Placeholder base model config for binary pneumonia classification using timm. EfficientNetV2-S is selected as the recommended starting model, with EfficientNet-B0 as a fallback if Colab memory or runtime becomes an issue."
