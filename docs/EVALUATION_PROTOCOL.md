@@ -75,6 +75,8 @@ A threshold of 0.5 is the standard baseline for binary probabilistic classifiers
 ### Important Rule
 **The test set must not be used to optimize the threshold.**
 
+Any deviation from the default threshold of 0.5 must include a documented justification, the validation procedure used to select the new threshold, and the metric trade-off that motivated the change.
+
 If threshold adjustment is explored, it must be done using:
 - the validation split, or
 - a separately defined development procedure
