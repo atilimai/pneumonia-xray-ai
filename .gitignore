@@ -39,6 +39,7 @@ artifacts/reports/*
 !artifacts/checkpoints/.gitkeep
 !artifacts/logs/.gitkeep
 !artifacts/figures/.gitkeep
+!artifacts/figures/*.png
 !artifacts/reports/.gitkeep
 
 # Model weights

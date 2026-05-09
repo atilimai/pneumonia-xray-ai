@@ -11,19 +11,19 @@ Define the complete evaluation protocol for the Pneumonia Detection model, inclu
 Binary classifiers require a decision threshold to produce class labels from raw probability outputs. The default threshold of 0.5 may not be optimal for this task, where the cost of a false negative (missing pneumonia) is higher than a false positive. This issue defines the threshold policy and the full evaluation procedure before any model is trained.
 
 ## Deliverables
-- [ ] Evaluation protocol documented in `docs/` or as a notebook section
-- [ ] Primary metric identified and justified (recommended: ROC AUC + sensitivity)
-- [ ] Decision threshold policy documented (default 0.5; justification required for any deviation)
-- [ ] All metrics to be reported listed: accuracy, precision, recall, sensitivity, specificity, ROC AUC, confusion matrix
-- [ ] Evaluation split confirmed as the held-out test set from the Kaggle download
-- [ ] Reporting format agreed (table of metrics + saved figures)
+- [x] Evaluation protocol documented in `docs/` or as a notebook section
+- [x] Primary metric identified and justified (recommended: ROC AUC + sensitivity)
+- [x] Decision threshold policy documented (default 0.5; justification required for any deviation)
+- [x] All metrics to be reported listed: accuracy, precision, recall, sensitivity, specificity, ROC AUC, confusion matrix
+- [x] Evaluation split confirmed as the held-out test set from the Kaggle download
+- [x] Reporting format agreed (table of metrics + saved figures)
 
 ## Acceptance Criteria
-- [ ] Evaluation protocol is documented and committed
-- [ ] Primary metric and threshold policy are explicitly stated
-- [ ] All metrics listed in `docs/METRICS.md` are confirmed as in-scope for evaluation
-- [ ] The evaluation split is confirmed and documented
-- [ ] No evaluation decisions are deferred to after results are seen
+- [x] Evaluation protocol is documented and committed
+- [x] Primary metric and threshold policy are explicitly stated
+- [x] All metrics listed in `docs/METRICS.md` are confirmed as in-scope for evaluation
+- [x] The evaluation split is confirmed and documented
+- [x] No evaluation decisions are deferred to after results are seen
 
 ## Dependencies
 - `01_repo_scaffold_review.md`

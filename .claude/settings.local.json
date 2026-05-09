@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs cat)",
+      "PowerShell(python --version)",
+      "PowerShell(pip show matplotlib)",
+      "PowerShell(pip show seaborn)",
+      "PowerShell(python -c \"import matplotlib; print\\(matplotlib.__version__\\)\")",
+      "PowerShell(py --version 2>&1)",
+      "PowerShell(py -c \"import matplotlib; print\\('OK', matplotlib.__version__\\)\" 2>&1)"
+    ]
+  }
+}
