@@ -29,7 +29,32 @@ Grad-CAM will be applied to the trained pneumonia classifier to produce heatmap 
 
 ## Implementation Plan
 
-- The target layer for Grad-CAM will be the final convolutional layer of the backbone (e.g., the last `Conv2d` block of EfficientNet or ResNet).
+- The target layer for Grad-CAM will be the final convolutional feature extraction layer of the selected backbone architecture.
+
+For the current baseline model:
+
+Baseline model:
+- `EfficientNetV2-S` (via `timm`)
+
+Selected target Grad-CAM layer:
+- `model.conv_head`
+
+Justification:
+- The final convolutional stage captures high-level semantic image features while preserving spatial information needed for Grad-CAM heatmap generation.
+- Earlier layers primarily capture low-level image features (edges, textures), while deeper layers better represent pathology-related structures relevant for pneumonia classification.
+- Using the final convolutional feature extraction stage follows common Grad-CAM practice and produces more interpretable activation maps.
+
+If the architecture changes in future experiments, the target layer should be updated accordingly.
+
+Examples:
+
+| Model | Suggested Target Layer |
+|--------|------------------------|
+| EfficientNetV2-S | `model.conv_head` |
+| EfficientNet-B0 | `model.conv_head` |
+| ResNet-18 | `model.layer4` |
+| ResNet-50 | `model.layer4` |
+
 - Heatmaps will be generated for a representative sample of test images covering both correct and incorrect predictions.
 - Overlaid images will be saved to `artifacts/figures/` and included in the evaluation report.
 
