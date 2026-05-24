@@ -36,7 +36,38 @@ This directory contains Jupyter notebooks for the full project workflow. Noteboo
 - Disclaimer: outputs are for educational inspection only
 
 ---
+## Colab Training Workflow
 
+This section defines the planned end-to-end workflow for running model training in Google Colab. Training is expected to use a GPU runtime, with persistent files stored in Google Drive because Colab runtime storage is temporary.
+
+### 1. Start a Fresh Colab Runtime
+
+Each training run should begin from a fresh Colab session to reduce dependency conflicts and memory issues.
+
+Recommended setup:
+
+1. Open the training notebook in Google Colab.
+2. Select a GPU runtime:
+   - `Runtime` → `Change runtime type` → `GPU`
+3. Verify GPU availability before training.
+4. Install or import required dependencies.
+5. Mount Google Drive for persistent dataset and checkpoint storage.
+
+Training should not rely on files saved only inside the temporary Colab runtime because they may be lost after disconnection.
+
+### 2. Prepare the Repository
+
+The training notebook should either clone the project repository into Colab or run from an already available project copy.
+
+Expected project structure:
+
+```text
+pneumonia-xray-ai/
+├── configs/
+├── data/
+├── notebooks/
+├── src/
+└── artifacts/
 ---
 
 ## Google Drive Mount Strategy
