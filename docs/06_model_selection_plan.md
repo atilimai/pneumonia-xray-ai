@@ -221,6 +221,37 @@ ResNet-50 can be added only if memory usage is acceptable.
 
 ---
 
+### Colab GPU Memory Requirement Estimate
+
+GPU memory usage was estimated on Google Colab using a Tesla T4 GPU.
+
+The estimate was performed with:
+
+- image size: 224 x 224
+- batch sizes tested: 8, 16, 32
+- loss function: BCEWithLogitsLoss
+- optimizer: AdamW
+- output classes: 1
+- measurement type: single synthetic training step
+
+| Model | Batch Size | Image Size | Peak GPU Memory (MB) | Fits Colab T4? | Notes |
+|---|---:|---:|---:|---|---|
+| `tf_efficientnetv2_s` | 8 | 224 | 1301.70 | Yes | Single synthetic training step |
+| `tf_efficientnetv2_s` | 16 | 224 | 2517.00 | Yes | Single synthetic training step |
+| `tf_efficientnetv2_s` | 32 | 224 | 4875.51 | Yes | Single synthetic training step |
+| `resnet18` | 8 | 224 | 296.79 | Yes | Single synthetic training step |
+| `resnet18` | 16 | 224 | 470.73 | Yes | Single synthetic training step |
+| `resnet18` | 32 | 224 | 809.73 | Yes | Single synthetic training step |
+| `resnet50` | 8 | 224 | 826.71 | Yes | Single synthetic training step |
+| `resnet50` | 16 | 224 | 1508.70 | Yes | Single synthetic training step |
+| `resnet50` | 32 | 224 | 2875.76 | Yes | Single synthetic training step |
+
+All tested candidate architectures fit within the available Colab Tesla T4 GPU memory for the tested batch sizes.
+
+These values are estimates and may differ during full training because real data loading, augmentation, mixed precision, checkpointing, and notebook runtime state can affect memory usage.
+
+---
+
 ## Planned Final Decision Rule
 
 The final architecture will be selected using the following rule:
