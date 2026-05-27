@@ -83,6 +83,7 @@ Suggested fallback path:
 
 ```text
 app/checkpoints/best_model.pt
+```markdown
 
 ---
 ## 5. Optional: Demo Application
