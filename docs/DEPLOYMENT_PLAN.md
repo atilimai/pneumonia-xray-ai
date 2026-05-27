@@ -81,8 +81,10 @@ If Hugging Face Hub loading is not available during development, the demo may te
 
 Suggested fallback path:
 
+````markdown
 ```text
 app/checkpoints/best_model.pt
+```
 
 ---
 ## 5. Optional: Demo Application
