@@ -112,8 +112,8 @@ Any interpretation of chest X-ray images must be performed by qualified healthca
 
 - GitHub repository with all code, configs, and documentation
 - Model artifacts linked or stored via Git LFS / Hugging Face Hub
+- Hugging Face Spaces will be used to host the interactive demo application
 - Optional: Hugging Face model page and Gradio demo Space
-
 ---
 
 ## Getting Started
