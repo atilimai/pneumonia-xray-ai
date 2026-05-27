@@ -43,7 +43,6 @@ A Hugging Face model repository may be created to host:
 
 ---
 
-```markdown
 ## 4. Demo Model Loading Strategy
 
 The lightweight demo will load the trained pneumonia classification model when the Gradio application starts.
