@@ -74,3 +74,21 @@ Allowed notebook behavior:
 
 ```python
 config = load_config("configs/training/base.yaml")
+
+```
+
+Discouraged notebook behavior:
+
+```python
+batch_size = 32
+learning_rate = 0.001
+num_epochs = 50
+```
+
+### Confirmation
+
+The current config structure centralizes the main model, training, and evaluation hyperparameters under `configs/`.
+
+Before final release, training and evaluation notebooks should be checked to confirm that they reference these config files rather than hardcoding experiment settings directly in notebook cells.
+
+If any hyperparameter is temporarily hardcoded during experimentation, it must be moved into the appropriate config file before final reporting or release.
