@@ -9,6 +9,35 @@
 
 ---
 
+## Dataset Version
+
+| Field | Value |
+|---|---|
+| Kaggle Dataset Version | v2 |
+| Kaggle Uploader | paultimothymooney |
+| Original Source | Mendeley Data |
+| DOI | [10.17632/rscbjbr9sj.2](https://doi.org/10.17632/rscbjbr9sj.2) |
+| Reference Paper | Kermany et al., *Cell* 2018 — "Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning" |
+| Download Date | 2026-05-28 |
+
+> The Mendeley DOI `10.17632/rscbjbr9sj.2` uniquely identifies version 2 of the original dataset and can be used to verify that the correct data was downloaded.
+
+---
+
+## Local Download Verification
+
+Recorded at download time (`data/raw/` folder properties on Windows):
+
+| Field | Value |
+|---|---|
+| Total files | 17,592 |
+| Total folders | 31 |
+| Size on disk | 2,483,915,296 bytes (2.31 GB) |
+
+If your local `data/raw/` folder does not match these numbers, you may have a different version or an incomplete download.
+
+---
+
 ## Binary Labels
 
 | Label | Meaning |

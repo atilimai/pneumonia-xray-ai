@@ -36,6 +36,123 @@ This directory contains Jupyter notebooks for the full project workflow. Noteboo
 - Disclaimer: outputs are for educational inspection only
 
 ---
+## Colab Training Workflow
+
+This section defines the planned end-to-end workflow for running model training in Google Colab. Training is expected to use a GPU runtime, with persistent files stored in Google Drive because Colab runtime storage is temporary.
+
+### 1. Start a Fresh Colab Runtime
+
+Each training run should begin from a fresh Colab session to reduce dependency conflicts and memory issues.
+
+Recommended setup:
+
+1. Open the training notebook in Google Colab.
+2. Select a GPU runtime:
+   - `Runtime` → `Change runtime type` → `GPU`
+3. Verify GPU availability before training.
+4. Install or import required dependencies.
+5. Mount Google Drive for persistent dataset and checkpoint storage.
+
+Training should not rely on files saved only inside the temporary Colab runtime because they may be lost after disconnection.
+
+### 2. Prepare the Repository
+
+The training notebook should either clone the project repository into Colab or run from an already available project copy.
+
+Expected project structure:
+
+```text
+pneumonia-xray-ai/
+├── configs/
+├── data/
+├── notebooks/
+├── src/
+└── artifacts/
+---
+
+## Google Drive Mount Strategy
+
+All persistent storage during Colab training — dataset files and model checkpoints — must be kept on Google Drive. The Colab runtime's local `/content/` directory is wiped on every session disconnect.
+
+### 1. Mounting Google Drive
+
+Add this cell at the top of every training notebook:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+After mounting, Google Drive is accessible at `/content/drive/MyDrive/`.
+
+### 2. Expected Drive Folder Layout
+
+Create the following structure inside your Google Drive before starting training:
+
+```
+MyDrive/
+└── pneumonia-xray-ai/
+    ├── data/
+    │   └── raw/
+    │       └── chest_xray/
+    │           ├── train/
+    │           │   ├── NORMAL/
+    │           │   └── PNEUMONIA/
+    │           ├── val/
+    │           │   ├── NORMAL/
+    │           │   └── PNEUMONIA/
+    │           └── test/
+    │               ├── NORMAL/
+    │               └── PNEUMONIA/
+    └── artifacts/
+        ├── checkpoints/
+        └── figures/
+```
+
+### 3. Path Mapping
+
+| Purpose | Drive path | Local repo equivalent |
+|---|---|---|
+| Dataset root | `/content/drive/MyDrive/pneumonia-xray-ai/data/raw/chest_xray/` | `data/raw/chest_xray/` |
+| Checkpoint directory | `/content/drive/MyDrive/pneumonia-xray-ai/artifacts/checkpoints/` | `artifacts/checkpoints/` |
+| Saved figures | `/content/drive/MyDrive/pneumonia-xray-ai/artifacts/figures/` | `artifacts/figures/` |
+
+### 4. Path Constants in Notebooks
+
+Define all Drive paths as constants in a dedicated setup cell so they are easy to update in one place:
+
+```python
+import os
+
+DRIVE_ROOT      = "/content/drive/MyDrive/pneumonia-xray-ai"
+DATASET_PATH    = os.path.join(DRIVE_ROOT, "data/raw/chest_xray")
+CHECKPOINT_DIR  = os.path.join(DRIVE_ROOT, "artifacts/checkpoints")
+FIGURES_DIR     = os.path.join(DRIVE_ROOT, "artifacts/figures")
+
+# Create directories if they don't already exist
+os.makedirs(CHECKPOINT_DIR, exist_ok=True)
+os.makedirs(FIGURES_DIR, exist_ok=True)
+```
+
+### 5. Checkpoint Save Convention
+
+Checkpoints must be saved to `CHECKPOINT_DIR` using a filename that encodes the epoch and validation metric so the best run can be identified after a disconnection:
+
+```python
+# Save every N epochs
+checkpoint_path = os.path.join(CHECKPOINT_DIR, f"checkpoint_epoch{epoch:03d}.pt")
+torch.save(model.state_dict(), checkpoint_path)
+
+# Separately keep the best checkpoint by validation loss
+best_checkpoint_path = os.path.join(CHECKPOINT_DIR, "best_model.pt")
+if val_loss < best_val_loss:
+    best_val_loss = val_loss
+    torch.save(model.state_dict(), best_checkpoint_path)
+```
+
+Keep only the most recent N periodic checkpoints and always keep `best_model.pt`. This avoids filling Drive storage during long runs.
+
+---
 
 ## Notes
 

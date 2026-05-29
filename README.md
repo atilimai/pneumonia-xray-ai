@@ -45,7 +45,7 @@ Build a binary image classifier that:
 
 ## Repository Structure
 
-```
+
 .
 ├── README.md
 ├── LICENSE
@@ -54,20 +54,20 @@ Build a binary image classifier that:
 ├── requirements.txt
 ├── PROJECT_OVERVIEW.md
 ├── ROADMAP.md
-├── data/                        # Dataset folders (files NOT committed)
-│   ├── raw/                     # Original downloaded data
-│   ├── interim/                 # Intermediate transformations
-│   ├── processed/               # Final preprocessed data
-│   └── external/                # Any external reference data
-├── notebooks/                   # Jupyter / Colab notebooks
-├── src/                         # Source modules (data, models, training, eval, etc.)
-├── configs/                     # Experiment configuration files
-├── artifacts/                   # Generated outputs (logs, checkpoints, figures)
-├── app/                         # Future lightweight demo application
-├── docs/                        # Project documentation and issue drafts
-├── tests/                       # Unit and integration tests
-└── .github/                     # Issue templates and PR template
-```
+├── data/ # Dataset folders (files NOT committed)
+│ ├── raw/ # Original downloaded data
+│ ├── interim/ # Intermediate transformations
+│ ├── processed/ # Final preprocessed data
+│ └── external/ # Any external reference data
+├── notebooks/ # Jupyter / Colab notebooks
+├── src/ # Source modules (data, models, training, eval, etc.)
+├── configs/ # Experiment configuration files
+├── artifacts/ # Generated outputs (logs, checkpoints, figures)
+├── app/ # Future lightweight demo application
+├── docs/ # Project documentation and issue drafts
+├── tests/ # Unit and integration tests
+└── .github/ # Issue templates and PR template
+
 
 ---
 
@@ -96,12 +96,24 @@ Training will be conducted on Google Colab using GPU runtimes. Notebooks in `not
 
 ---
 
+## Medical Disclaimer
+
+This project is intended for educational and research purposes only.
+
+The pneumonia detection model, generated predictions, visualizations, metrics, Grad-CAM heatmaps, and any related outputs are not medical devices and must not be used for clinical diagnosis, treatment decisions, patient triage, medical screening, patient care, or replacing professional medical judgment.
+
+Model predictions may be inaccurate, biased, incomplete, or limited by the dataset, preprocessing choices, training procedure, evaluation setup, and model architecture.
+
+Any interpretation of chest X-ray images must be performed by qualified healthcare professionals. This project does not provide medical advice. If there is any concern about pneumonia or any other medical condition, consult a licensed medical professional.
+
+---
+
 ## Release Plan (Planned)
 
 - GitHub repository with all code, configs, and documentation
 - Model artifacts linked or stored via Git LFS / Hugging Face Hub
+- Hugging Face Spaces will be used to host the interactive demo application
 - Optional: Hugging Face model page and Gradio demo Space
-
 ---
 
 ## Getting Started

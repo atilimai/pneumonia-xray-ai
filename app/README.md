@@ -15,13 +15,11 @@ The demo is intended for **educational and research purposes only** and will inc
 
 ---
 
-## Planned Deployment Options
+## Planned Deployment
 
-### Gradio (Local or Hugging Face Spaces)
-A minimal Gradio interface is the preferred approach due to its simplicity and direct integration with Hugging Face Spaces for free public hosting.
+The demo application will use a lightweight Gradio interface and will be deployed publicly using Hugging Face Spaces.
 
-### Hugging Face Space
-The demo may be deployed as a public Hugging Face Space, linked from the project README and the Hugging Face model page.
+The Hugging Face Space will be linked from the main project README and may also be connected to a Hugging Face model page.
 
 ---
 

@@ -43,7 +43,51 @@ A Hugging Face model repository may be created to host:
 
 ---
 
-## 4. Optional: Demo Application
+## 4. Demo Model Loading Strategy
+
+The lightweight demo will load the trained pneumonia classification model when the Gradio application starts.
+
+### Primary Strategy: Hugging Face Hub
+
+The preferred strategy is to upload the final trained checkpoint to the **Hugging Face Hub** and load it from there during demo startup.
+
+This approach is preferred because:
+
+- large model checkpoint files should not be committed directly to GitHub;
+- Hugging Face Spaces integrates naturally with Hugging Face Hub;
+- the demo repository can remain lightweight;
+- the model checkpoint can be versioned and documented with a model card;
+- checkpoint provenance, including training configuration and evaluation metrics, can be recorded clearly.
+
+The demo should load the following items:
+
+- trained model checkpoint;
+- model architecture/configuration;
+- preprocessing settings such as image size and normalization values;
+- class label mapping.
+
+Expected loading flow:
+
+1. Initialize the selected model architecture.
+2. Download or access the trained checkpoint from Hugging Face Hub.
+3. Load the checkpoint weights into the model.
+4. Set the model to evaluation mode.
+5. Apply the same preprocessing pipeline used during training.
+6. Run inference on the uploaded image.
+
+### Fallback Strategy: Bundled Checkpoint
+
+If Hugging Face Hub loading is not available during development, the demo may temporarily use a bundled local checkpoint.
+
+Suggested fallback path:
+
+
+```text
+app/checkpoints/best_model.pt
+```
+
+---
+## 5. Optional: Demo Application
 
 A lightweight interactive demo may be deployed on **Hugging Face Spaces** using **Gradio**.
 
