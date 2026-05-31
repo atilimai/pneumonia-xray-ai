@@ -49,24 +49,24 @@ This project performs **binary classification** only. Bacterial vs. viral sub-cl
 
 ---
 
-## Expected Dataset Structure
+## Confirmed Dataset Structure
 
-After downloading and extracting the Kaggle dataset into `data/raw/`, the expected folder structure is:
+After downloading and extracting the Kaggle dataset into `data/raw/`, the confirmed folder structure is:
 
 ```
 data/raw/chest_xray/
 ├── train/
-│   ├── NORMAL/        (~1341 images)
-│   └── PNEUMONIA/     (~3875 images)
+│   ├── NORMAL/        (1341 images)
+│   └── PNEUMONIA/     (3875 images)
 ├── val/
-│   ├── NORMAL/        (~8 images)
-│   └── PNEUMONIA/     (~8 images)
+│   ├── NORMAL/        (8 images)
+│   └── PNEUMONIA/     (8 images)
 └── test/
-    ├── NORMAL/        (~234 images)
-    └── PNEUMONIA/     (~390 images)
+    ├── NORMAL/        (234 images)
+    └── PNEUMONIA/     (390 images)
 ```
 
-## Expected File Counts
+## Confirmed File Counts
 
 | Split | NORMAL | PNEUMONIA | Total |
 |------|--------|-----------|-------|
@@ -76,7 +76,7 @@ data/raw/chest_xray/
 
 Total images: 5856
 
-> Image counts are approximate and based on the standard Kaggle distribution.
+> Image counts confirmed by local file-system count on 2026-05-31 (`Get-ChildItem -File` per class folder).
 
 ---
 
