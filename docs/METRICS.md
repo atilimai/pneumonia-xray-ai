@@ -60,4 +60,48 @@ Same as Recall. See above. Highlighted separately because it is the primary clin
 
 The default decision threshold for binary classification is 0.5 (softmax probability). Adjusting this threshold trades off sensitivity against specificity. The evaluation protocol will document the chosen threshold and its justification.
 
+---
+
+## Reported Test Set Metrics
+
+The following values were computed on the held-out test split using the saved checkpoint and the fixed decision threshold defined in the evaluation protocol.
+
+- **Evaluation split:** test
+- **Positive class:** `PNEUMONIA`
+- **Negative class:** `NORMAL`
+- **Decision threshold:** 0.5
+- **Prediction file:** `artifacts/predictions/test_predictions.csv`
+
+| Metric | Value |
+|---|---:|
+| Accuracy | 0.8654 |
+| Precision | 0.8355 |
+| Sensitivity / Recall | 0.9769 |
+| Specificity | 0.6795 |
+| ROC AUC | 0.9626 |
+| False Positive Rate | 0.3205 |
+| False Negative Rate | 0.0231 |
+
+### Confusion Matrix Counts
+
+| Count | Value |
+|---|---:|
+| True Negative (TN) | 159 |
+| False Positive (FP) | 75 |
+| False Negative (FN) | 9 |
+| True Positive (TP) | 381 |
+
+### Per-Class Error Breakdown
+
+| Error Type | Count |
+|---|---:|
+| NORMAL predicted as PNEUMONIA (False Positive) | 75 |
+| PNEUMONIA predicted as NORMAL (False Negative) | 9 |
+
+### Notes
+
+These values were produced by running the evaluation workflow with `src/evaluation/evaluate.py`.
+
+The test set was not used for threshold tuning. The decision threshold was fixed at `0.5` before computing the final reported metrics.
+
 See `docs/issues/06_evaluation_protocol_definition.md` for the full evaluation protocol plan.
