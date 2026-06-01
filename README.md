@@ -31,7 +31,7 @@ Build a binary image classifier that:
 
 ---
 
-## Planned Approach
+## Project Approach
 
 | Area | Plan |
 |---|---|
@@ -63,7 +63,7 @@ Build a binary image classifier that:
 ├── src/ # Source modules (data, models, training, eval, etc.)
 ├── configs/ # Experiment configuration files
 ├── artifacts/ # Generated outputs (logs, checkpoints, figures)
-├── app/ # Future lightweight demo application
+├── app/ # Demo application resources
 ├── docs/ # Project documentation and issue drafts
 ├── tests/ # Unit and integration tests
 └── .github/ # Issue templates and PR template
@@ -71,7 +71,7 @@ Build a binary image classifier that:
 
 ---
 
-## Metrics (Planned)
+## Evaluation Metrics
 
 - Accuracy
 - Precision / Recall
@@ -84,13 +84,13 @@ See [`docs/METRICS.md`](docs/METRICS.md) for details.
 
 ---
 
-## Explainability (Planned)
+## Explainability
 
 Grad-CAM will be used to produce heatmap overlays highlighting regions of the X-ray that most influenced the model's prediction. This is intended for qualitative inspection only. See [`docs/EXPLAINABILITY.md`](docs/EXPLAINABILITY.md).
 
 ---
 
-## Training Environment (Planned)
+## Training Environment
 
 Training will be conducted on Google Colab using GPU runtimes. Notebooks in `notebooks/` will contain the full training workflow.
 
@@ -108,7 +108,7 @@ Any interpretation of chest X-ray images must be performed by qualified healthca
 
 ---
 
-## Release Plan (Planned)
+## Release Plan
 
 - GitHub repository with all code, configs, and documentation
 - Model artifacts linked or stored via Git LFS / Hugging Face Hub
