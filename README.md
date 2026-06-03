@@ -128,3 +128,30 @@ Any interpretation of chest X-ray images must be performed by qualified healthca
 ## License
 
 See [LICENSE](LICENSE).
+# Final Model and Results
+
+## Final Model
+
+The final model will be a transfer learning-based convolutional neural network trained on the Chest X-Ray (Pneumonia) dataset. Candidate architectures include EfficientNet and ResNet variants implemented using PyTorch and timm.
+
+## Performance Metrics
+
+The following metrics will be reported after final evaluation:
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Sensitivity
+- Specificity
+- ROC AUC
+
+Final metric values will be added once model training and evaluation are completed.
+
+## Demo
+
+A demonstration application may be deployed using Hugging Face Spaces and linked here when available.
+
+## Notes
+
+This project is intended for educational and research purposes only and is not a medical diagnostic system.
