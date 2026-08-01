@@ -1,6 +1,6 @@
 # Deployment Plan
 
-This document outlines the final and actual approach taken for publishing and sharing the Pneumonia Detection project.
+This document outlines the approach for publishing and sharing the Pneumonia Detection project. The GitHub repository is the main deliverable and is ready; the Hugging Face model page and the Gradio demo are optional next steps that are not live yet (see the status notes below and `docs/RELEASE_CHECKLIST.md`).
 
 ---
 
@@ -18,20 +18,23 @@ The primary delivery is the GitHub repository itself, acting as the central code
 ---
 
 ## 2. Model Artifacts & Hosting
-The trained model checkpoint (`.pt` file) is too large to commit directly to GitHub. Therefore, the final best model weights are hosted on the **Hugging Face Hub** as a dedicated model repository, accompanied by a comprehensive model card (`README.md`).
+The trained model checkpoint (`.pt` file) is too large to commit directly to GitHub. The plan is to host the final best model weights on the **Hugging Face Hub** as a dedicated model repository, accompanied by a model card (see `MODEL_CARD.md`).
+
+**Current status:** not yet uploaded. A shareable checkpoint is not in the repo yet. As an alternative to a separate Hugging Face repo, the weights can also be attached as a binary asset on the GitHub Release. See `docs/RELEASE_CHECKLIST.md` for the upload steps.
 
 ---
 
 ## 3. Demo Application (Hugging Face Spaces)
-An interactive user interface has been built and deployed on **Hugging Face Spaces** using the **Gradio** framework.
+The planned demo is a lightweight **Gradio** interface on **Hugging Face Spaces**.
 
-**Key Features of the Demo App:**
-- **Inference:** Users can upload a chest X-ray image (JPEG/PNG) and get instant predictions (Normal vs. Pneumonia) with confidence scores.
-- **Explainability:** Fully integrated with Grad-CAM to overlay heatmaps on the X-ray, highlighting exactly where the model focused.
-- **Medical Disclaimer:** A strict and visible disclaimer indicating the app is for educational purposes only.
+**Planned features:**
+- **Inference:** upload a chest X-ray image (JPEG/PNG) and get a prediction (Normal vs. Pneumonia) with a confidence score.
+- **Explainability:** a Grad-CAM heatmap overlaid on the X-ray to show where the model focused.
+- **Medical Disclaimer:** a visible disclaimer stating the app is for educational purposes only.
 
-**Model Loading Strategy:**
-The Gradio application dynamically fetches and loads the trained model weights directly from the Hugging Face Hub repository upon container startup, ensuring the space remains lightweight.
+**Planned model loading:** the Gradio app would load the trained weights from the Hugging Face Hub repository (or the GitHub Release) at startup, so the Space itself stays small.
+
+**Current status:** not built or deployed yet. `app/` contains only the structure and a README; there is no `app.py`. Deployment is optional for this release and depends on having a trained checkpoint first.
 
 ---
 

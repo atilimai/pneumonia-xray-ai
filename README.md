@@ -35,7 +35,7 @@ Build a binary image classifier that:
 
 | Area | Plan |
 |---|---|
-| **Model** | Transfer learning with EfficientNet or ResNet (via `timm`) |
+| **Model** | Transfer learning with ResNet-50 (via `timm`), ImageNet pretrained |
 | **Training** | Google Colab (GPU runtime) |
 | **Evaluation** | Sensitivity, Specificity, ROC AUC, Confusion Matrix |
 | **Explainability** | Grad-CAM heatmaps for qualitative interpretation |
@@ -84,6 +84,26 @@ See [`docs/METRICS.md`](docs/METRICS.md) for details.
 
 ---
 
+## Results
+
+Final results on the held-out test split (624 images), ResNet-50 at decision
+threshold 0.5:
+
+| Metric | Value |
+|---|---|
+| Accuracy | 0.8654 |
+| Precision | 0.8355 |
+| Sensitivity / Recall | 0.9769 |
+| Specificity | 0.6795 |
+| ROC AUC | 0.9626 |
+
+Confusion matrix (TN / FP / FN / TP): 159 / 75 / 9 / 381. The model catches almost
+all pneumonia cases (9 false negatives) but flags a number of normal X-rays as
+pneumonia (75 false positives). Full write-up in
+[`docs/METRICS.md`](docs/METRICS.md) and [`CHANGELOG.md`](CHANGELOG.md).
+
+---
+
 ## Explainability
 
 Grad-CAM will be used to produce heatmap overlays highlighting regions of the X-ray that most influenced the model's prediction. This is intended for qualitative inspection only. See [`docs/EXPLAINABILITY.md`](docs/EXPLAINABILITY.md).
@@ -108,12 +128,24 @@ Any interpretation of chest X-ray images must be performed by qualified healthca
 
 ---
 
-## Release Plan
+## Release
 
-- GitHub repository with all code, configs, and documentation
-- Model artifacts linked or stored via Git LFS / Hugging Face Hub
-- Hugging Face Spaces will be used to host the interactive demo application
-- Optional: Hugging Face model page and Gradio demo Space
+- Release notes: [`CHANGELOG.md`](CHANGELOG.md)
+- Release steps and current status: [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md)
+- Model card (ready for Hugging Face): [`MODEL_CARD.md`](MODEL_CARD.md)
+
+The GitHub repository is the main deliverable. Publishing the trained weights on
+the Hugging Face Hub and deploying a Gradio demo are optional next steps and are
+not live yet.
+
+---
+
+## Demo
+
+A Gradio demo on Hugging Face Spaces is planned but not deployed yet. When it goes
+live, the link will be added here and in [`app/README.md`](app/README.md), and the
+demo will carry the same medical disclaimer shown above.
+
 ---
 
 ## Getting Started
@@ -127,31 +159,4 @@ Any interpretation of chest X-ray images must be performed by qualified healthca
 
 ## License
 
-See [LICENSE](LICENSE).
-# Final Model and Results
-
-## Final Model
-
-The final model will be a transfer learning-based convolutional neural network trained on the Chest X-Ray (Pneumonia) dataset. Candidate architectures include EfficientNet and ResNet variants implemented using PyTorch and timm.
-
-## Performance Metrics
-
-The following metrics will be reported after final evaluation:
-
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- Sensitivity
-- Specificity
-- ROC AUC
-
-Final metric values will be added once model training and evaluation are completed.
-
-## Demo
-
-A demonstration application may be deployed using Hugging Face Spaces and linked here when available.
-
-## Notes
-
-This project is intended for educational and research purposes only and is not a medical diagnostic system.
+See [LICENSE](LICENSE). Released under GPL-3.0.
