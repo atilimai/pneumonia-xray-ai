@@ -68,6 +68,45 @@ pneumonia-xray-ai/
 ├── notebooks/
 ├── src/
 └── artifacts/
+```
+
+If you clone the repo inside Colab, run:
+
+```bash
+!git clone https://github.com/atilimai/pneumonia-xray-ai.git
+%cd pneumonia-xray-ai
+!pip install -r requirements.txt
+```
+
+### 3. Get the Dataset
+
+There are two ways to get the dataset and you only need one of them:
+
+- Kaggle download (this is what `colab_training.ipynb` uses): the notebook asks
+  for a Kaggle API token and downloads the Chest X-Ray dataset into the runtime.
+  Nothing needs to be on Drive first.
+- Drive copy: if the dataset is already on Drive with the layout shown below,
+  just point `DATASET_PATH` at it and skip the download.
+
+Either way, checkpoints and figures still have to be saved to Drive so they are
+not lost when the session disconnects (see the Drive section below).
+
+### 4. Keep the Colab Limits in Mind
+
+Colab sessions are not stable, so keep these in mind for every run:
+
+- Free sessions last around 12 hours and also disconnect when idle, so try to
+  finish training in that time.
+- Anything under `/content/` is deleted on disconnect, so don't keep important
+  files there.
+- Save checkpoints to Drive every few epochs and keep the best one separately, so
+  a disconnect doesn't force a full retrain. See
+  [`docs/CHECKPOINT_STRATEGY.md`](../docs/CHECKPOINT_STRATEGY.md) and
+  [`docs/RESUME_STRATEGY.md`](../docs/RESUME_STRATEGY.md).
+- A `tqdm` progress bar helps because Colab sometimes delays the output.
+
+For the full plan see [`docs/COLAB_TRAINING_PLAN.md`](../docs/COLAB_TRAINING_PLAN.md).
+
 ---
 
 ## Google Drive Mount Strategy
